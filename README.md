@@ -8,7 +8,7 @@ CookHelper is a program that takes recipes and outputs information or supermarke
 Use maven to package the project.
 
 ```bash
-mvn package
+mvn clean package
 ```
 
 
