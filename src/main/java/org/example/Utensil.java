@@ -1,7 +1,7 @@
 package org.example;
 
 /**
- * An utensil interface
+ * A utensil interface
  */
 public interface Utensil {
 
