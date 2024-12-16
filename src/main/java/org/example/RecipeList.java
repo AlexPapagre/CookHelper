@@ -1,14 +1,27 @@
 package org.example;
 
+/**
+ * A recipe list interface
+ */
 public interface RecipeList {
 
-    // Adds a recipe to the list
+    /**
+     * Add recipe.
+     *
+     * @param recipe the recipe to add to the list
+     */
     void add(Recipe recipe);
 
-    // Makes a list of the added recipes
+    /**
+     * Make a list of the added recipes.
+     */
     void makeList();
 
-    // Returns the created list
+    /**
+     * Returns list.
+     *
+     * @return str the created list
+     */
     String getList();
 
 }

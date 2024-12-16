@@ -2,12 +2,23 @@ package org.example;
 
 import java.util.List;
 
+/**
+ * A recipe interface
+ */
 public interface Recipe {
 
-    // Returns the steps of the recipe in a list
+    /**
+     * Returns steps.
+     *
+     * @return steps the steps of the recipe in a list
+     */
     List<Step> getSteps();
 
-    // Returns the recipe instructions
+    /**
+     * Returns instructions.
+     *
+     * @return str the recipe instructions
+     */
     String getRecipe();
 
 }

@@ -11,7 +11,7 @@ public class RecipeImpl implements Recipe {
     private Time times;
 
     public RecipeImpl(String fileName, int people) {
-        StepsReader in = new StepsReaderImpl(people);
+        StepReader in = new StepReaderImpl(people);
         this.steps = in.parseSteps(fileName);
         this.ingredients = putIngredients();
         this.utensils = putUtensils();

@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-public class StepsReaderImpl implements StepsReader {
+public class StepReaderImpl implements StepReader {
     private List<Step> steps;
     private int people;
     private static final Logger logErr = new ErrorLogger();
 
-    public StepsReaderImpl(int people) {
+    public StepReaderImpl(int people) {
         this.steps = new ArrayList<>();
         this.people = people;
     }
