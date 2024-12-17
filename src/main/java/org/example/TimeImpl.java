@@ -1,7 +1,7 @@
 package org.example;
 
 public class TimeImpl implements Time {
-    private long time;
+    private long seconds;
 
     public TimeImpl() {
         this(0);
@@ -16,27 +16,27 @@ public class TimeImpl implements Time {
     }
 
     @Override
-    public long getTime() {
-        return time;
+    public long getSeconds() {
+        return seconds;
     }
 
     @Override
     public void addTimes(Time t) {
-        this.time += t.getTime();
+        this.seconds += t.getSeconds();
     }
 
     @Override
     public String toString() {
-        return Convertor.convertTime(time);
+        return Convertor.convertTime(seconds);
     }
 
     private void calculateTime(double time, String measure) {
         if (measure.equalsIgnoreCase("seconds") || measure.equalsIgnoreCase("second") || measure.equalsIgnoreCase("δευτερόλεπτα") || measure.equalsIgnoreCase("δευτερόλεπτο")) {
-            this.time = (long) time;
+            this.seconds = (long) time;
         } else if (measure.equalsIgnoreCase("minutes") || measure.equalsIgnoreCase("minute") || measure.equalsIgnoreCase("λεπτά") || measure.equalsIgnoreCase("λεπτό")) {
-            this.time = (long) (time * 60);
+            this.seconds = (long) (time * 60);
         } else if (measure.equalsIgnoreCase("hours") || measure.equalsIgnoreCase("hour") || measure.equalsIgnoreCase("ώρες") || measure.equalsIgnoreCase("ώρα")) {
-            this.time = (long) (time * 60 * 60);
+            this.seconds = (long) (time * 60 * 60);
         } else {
             Logger logErr = new ErrorLogger();
             logErr.log("File has an unrecognizable time measure!");

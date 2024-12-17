@@ -6,11 +6,11 @@ package org.example;
 public interface Time {
 
     /**
-     * Returns time.
+     * Returns seconds.
      *
      * @return time the time in seconds
      */
-    long getTime();
+    long getSeconds();
 
     /**
      * Add t to this time.
