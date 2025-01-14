@@ -15,6 +15,7 @@
     </properties>
 
     <build>
+        <finalName>recipes</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
