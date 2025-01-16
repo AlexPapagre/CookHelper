@@ -32,7 +32,6 @@ public class RecipeListImpl implements RecipeList {
         for (Map.Entry<String, IngredientByMeasure> entry : ingredients.entrySet()) {
             str.append("  ").append(entry.getKey()).append(entry.getValue().getAmountMeasure()).append("\n");
         }
-        str.append("\n");
 
         return str.toString();
     }
