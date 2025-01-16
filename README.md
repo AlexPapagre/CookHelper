@@ -2,6 +2,7 @@
 
 CookHelper is a program that takes recipes and outputs information or supermarket list based on the arguments.
 
+# TODO change exit class
 
 ## Usage
 

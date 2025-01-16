@@ -6,9 +6,10 @@ import java.util.List;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class StepReaderImpl implements StepReader {
+    private static final Logger logErr = new ErrorLogger();
+
     private List<Step> steps;
     private int people;
-    private static final Logger logErr = new ErrorLogger();
 
     public StepReaderImpl(int people) {
         this.steps = new ArrayList<>();
@@ -16,7 +17,7 @@ public class StepReaderImpl implements StepReader {
     }
 
     @Override
-    public List<Step> parseSteps(String fileName) {
+    public List<Step> parseSteps(String fileName) throws FileNotFoundException {
         BufferedReader in = null;
         try {
             in = new BufferedReader(new FileReader(fileName, UTF_8));
@@ -52,8 +53,7 @@ public class StepReaderImpl implements StepReader {
                 steps.add(new Step(desc, ingredients, utensils, time));
             }
         } catch (FileNotFoundException e) {
-            logErr.log("File \"" + fileName + "\" not found!");
-            System.exit(1);
+            throw new FileNotFoundException();
         } catch (IOException e) {
             logErr.log("Error: " + e.getMessage());
             System.exit(1);

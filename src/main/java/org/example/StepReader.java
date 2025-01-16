@@ -1,5 +1,6 @@
 package org.example;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 /**
@@ -15,6 +16,6 @@ public interface StepReader {
      * @param fileName the name of the file
      * @return steps the list of steps
      */
-    List<Step> parseSteps(String fileName);
+    List<Step> parseSteps(String fileName) throws FileNotFoundException;
 
 }

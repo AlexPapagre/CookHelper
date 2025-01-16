@@ -1,5 +1,6 @@
 package org.example;
 
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +11,7 @@ public class RecipeImpl implements Recipe {
     private Map<String, Integer> utensils;
     private Time times;
 
-    public RecipeImpl(String fileName, int people) {
+    public RecipeImpl(String fileName, int people) throws FileNotFoundException {
         StepReader in = new StepReaderImpl(people);
         this.steps = in.parseSteps(fileName);
         this.ingredients = putIngredients();
