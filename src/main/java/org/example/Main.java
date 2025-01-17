@@ -1,5 +1,7 @@
 package org.example;
 
+import javax.swing.*;
+import java.io.File;
 import java.io.FileNotFoundException;
 
 public class Main {
@@ -57,7 +59,7 @@ public class Main {
                     try {
                         recipe = new RecipeImpl(fileName, people);
                     } catch (FileNotFoundException e) {
-                        logErr.log("File \"" + fileName + "\" not found!");
+                        logErr.log("File \"" + fileName + "\" doesn't exist!");
                         System.exit(1);
                     }
 
@@ -94,7 +96,7 @@ public class Main {
                         try {
                             recipes.add(new RecipeImpl(fileName, people));
                         } catch (FileNotFoundException e) {
-                            logErr.log("File \"" + fileName + "\" not found!");
+                            logErr.log("File \"" + fileName + "\" doesn't exist!");
                             System.exit(1);
                         }
                     }
@@ -113,6 +115,23 @@ public class Main {
         }
 
         // GUI
+
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+        for (String arg : args) {
+
+            File file = new File(arg);
+            if (file.exists()) {
+                if (file.getName().endsWith(".cook")) {
+                    listModel.addElement(file.getName().replace(".cook", "") + " --> (" + file.getAbsolutePath() + ")");
+                } else {
+                    logErr.log("File \"" + file.getName() + "\" is not a \".cook\" file!");
+                }
+            } else {
+                logErr.log("File \"" + arg + "\" doesn't exist!");
+            }
+        }
+        JList<String> fileList = new JList<>(listModel);
+
         logger.log("GUI");
     }
 }
