@@ -31,7 +31,7 @@ public class MainMenuView extends JFrame {
         this.add(selectFilesButton, BorderLayout.NORTH);
 
         // Add main menu button panel
-        MainMenuButtonPanel mainMenuButtonPanel = new MainMenuButtonPanel(this, fileList);
+        MainMenuButtonPanel mainMenuButtonPanel = new MainMenuButtonPanel(this, listModel, fileList);
         this.add(mainMenuButtonPanel, BorderLayout.EAST);
     }
 

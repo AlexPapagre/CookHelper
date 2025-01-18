@@ -9,14 +9,12 @@ public class PeopleButtonPanel extends JPanel {
     public PeopleButtonPanel(JFrame frame, JDialog dialog, List<String> files, JTextField integerField, String button) {
 
         // Create people buttons
-        OkButton okButton = null;
-        if (button.equals("Display Recipe")) {
-            okButton = new DisplayRecipeOkButton(frame, dialog, files.getFirst(), integerField);
-        } else if (button.equals("Shopping List")) {
-            okButton = new ShoppingListOkButton(frame, dialog, files, integerField);
-        } else if (button.equals("Execute Recipe")) {
-            okButton = new ExecuteRecipeOkButton(frame, dialog, files.getFirst(), integerField);
-        }
+        OkButton okButton = switch (button) {
+            case "Display Recipe" -> new DisplayRecipeOkButton(frame, dialog, files.getFirst(), integerField);
+            case "Shopping List" -> new ShoppingListOkButton(frame, dialog, files, integerField);
+            case "Execute Recipe" -> new ExecuteRecipeOkButton(frame, dialog, files.getFirst(), integerField);
+            default -> null;
+        };
         CloseButton closeButton = new CloseButton(dialog);
 
         // Create people button panel

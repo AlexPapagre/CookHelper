@@ -5,13 +5,13 @@ import java.awt.*;
 
 public class MainMenuButtonPanel extends JPanel {
 
-    public MainMenuButtonPanel(JFrame frame, JList<String> fileList) {
+    public MainMenuButtonPanel(JFrame frame, DefaultListModel<String> listModel, JList<String> fileList) {
 
         // Create main menu button panel buttons
         DisplayRecipeButton displayRecipeButton = new DisplayRecipeButton(frame, fileList);
         ShoppingListButton shoppingListButton = new ShoppingListButton(frame, fileList);
         ExecuteRecipeButton executeRecipeButton = new ExecuteRecipeButton(frame, fileList);
-        RemoveRecipeButton removeRecipeButton = new RemoveRecipeButton(frame, fileList);
+        RemoveRecipeButton removeRecipeButton = new RemoveRecipeButton(frame, listModel, fileList);
         ExitButton exitButton = new ExitButton(frame);
 
         // Create main menu button panel
