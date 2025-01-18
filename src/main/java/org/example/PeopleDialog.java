@@ -2,10 +2,11 @@ package org.example;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 public class PeopleDialog extends JDialog {
 
-    public PeopleDialog(JFrame frame, String file) {
+    public PeopleDialog(JFrame frame, List<String> files, String button) {
 
         // Create people dialog
         super(frame, "People", true);
@@ -26,7 +27,7 @@ public class PeopleDialog extends JDialog {
         this.add(inputPanel, BorderLayout.CENTER);
 
         // Add people button panel
-        PeopleButtonPanel peopleButtonPanel = new PeopleButtonPanel(frame, this, file, integerField);
+        PeopleButtonPanel peopleButtonPanel = new PeopleButtonPanel(frame, this, files, integerField, button);
         this.add(peopleButtonPanel, BorderLayout.SOUTH);
 
         // Make people dialog visible

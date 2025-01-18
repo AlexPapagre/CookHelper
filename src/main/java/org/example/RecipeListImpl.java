@@ -28,7 +28,6 @@ public class RecipeListImpl implements RecipeList {
         StringBuilder str = new StringBuilder();
 
         // List
-        str.append("Λίστα σούπερ μάρκετ:\n");
         for (Map.Entry<String, IngredientByMeasure> entry : ingredients.entrySet()) {
             str.append("  ").append(entry.getKey()).append(entry.getValue().getAmountMeasure()).append("\n");
         }

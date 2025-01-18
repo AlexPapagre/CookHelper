@@ -3,7 +3,7 @@ package org.example;
 public class RecipeModel {
     private final int people;
     private final String name;
-    private final RecipeImpl recipe;
+    private final Recipe recipe;
 
     public RecipeModel(String file, int people) {
         this.people = people;
@@ -16,15 +16,7 @@ public class RecipeModel {
         recipe = new RecipeImpl(filePath, people);
     }
 
-    public int getPeople() {
-        return people;
-    }
-
-    public String getName() {
-        return name;
-    }
-
     public String displayRecipe() {
-        return recipe.getRecipe();
+        return "Συνταγή: '" + name + "' για " + people + " " + (people == 1 ? "άτομο" : "άτομα") + "\n\n" + recipe.getRecipe();
     }
 }

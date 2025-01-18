@@ -1,13 +1,16 @@
 package org.example;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class DisplayRecipePanel extends JPanel {
 
     public DisplayRecipePanel(RecipeModel model) {
 
-        // Add display recipe text area
-        DisplayRecipeTextArea displayRecipeTextArea = new DisplayRecipeTextArea(model);
+        // Create display recipe text area
+        JTextArea displayRecipeTextArea = new JTextArea(model.displayRecipe());
+        displayRecipeTextArea.setEditable(false);
+        displayRecipeTextArea.setFont(new Font("Arial", Font.PLAIN, 16));
         JScrollPane displayRecipeTextAreaScrollPane = new JScrollPane(displayRecipeTextArea);
 
         // Create display recipe panel

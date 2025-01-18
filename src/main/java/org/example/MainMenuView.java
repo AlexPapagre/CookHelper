@@ -22,7 +22,7 @@ public class MainMenuView extends JFrame {
             listModel.addElement(fileIterator.next());
         }
         JList<String> fileList = new JList<>(listModel);
-        fileList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        fileList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         JScrollPane scrollPane = new JScrollPane(fileList);
         this.add(scrollPane, BorderLayout.CENTER);
 
@@ -30,7 +30,7 @@ public class MainMenuView extends JFrame {
         SelectFilesButton selectFilesButton = new SelectFilesButton(this, listModel);
         this.add(selectFilesButton, BorderLayout.NORTH);
 
-        // Add 'Buttons' panel
+        // Add main menu button panel
         MainMenuButtonPanel mainMenuButtonPanel = new MainMenuButtonPanel(this, fileList);
         this.add(mainMenuButtonPanel, BorderLayout.EAST);
     }

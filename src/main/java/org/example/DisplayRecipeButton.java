@@ -3,6 +3,7 @@ package org.example;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class DisplayRecipeButton extends JButton implements ActionListener {
     private final JFrame frame;
@@ -21,13 +22,15 @@ public class DisplayRecipeButton extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        // Get selected file
-        String selectedFile = fileList.getSelectedValue();
+        // Get selected files
+        List<String> selectedFiles = fileList.getSelectedValuesList();
 
-        if (selectedFile != null) {
+        if (selectedFiles.size() == 1) {
 
             // Adding dialog to ask for amount of people
-            PeopleDialog peopleDialog = new PeopleDialog(frame, selectedFile);
+            new PeopleDialog(frame, selectedFiles, "Display Recipe");
+        } else if (selectedFiles.size() > 1) {
+            JOptionPane.showMessageDialog(frame, "You can't display more than one recipe at the same time!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(frame, "No recipe selected to display!", "Error", JOptionPane.ERROR_MESSAGE);
         }

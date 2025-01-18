@@ -2,16 +2,15 @@ package org.example;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.InputMismatchException;
 
-public class DisplayRecipeOkButton extends OkButton {
+public class ExecuteRecipeOkButton extends OkButton {
     private final JFrame frame;
     private final JDialog dialog;
     private final String file;
     private final JTextField integerField;
 
-    public DisplayRecipeOkButton(JFrame frame, JDialog dialog, String file, JTextField integerField) {
+    public ExecuteRecipeOkButton(JFrame frame, JDialog dialog, String file, JTextField integerField) {
         this.frame = frame;
         this.dialog = dialog;
         this.file = file;
@@ -33,8 +32,8 @@ public class DisplayRecipeOkButton extends OkButton {
             // Close people dialog
             dialog.dispose();
 
-            // Display Recipe
-            DisplayRecipeView displayRecipeView = new DisplayRecipeView(frame, new RecipeModel(file, people));
+            // Execute Recipe
+//            ExecuteRecipeView
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(dialog, "Invalid input.\nPlease enter a valid amount of people!", "Error", JOptionPane.ERROR_MESSAGE);
         } catch (InputMismatchException ex) {
