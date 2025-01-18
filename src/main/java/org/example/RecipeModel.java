@@ -21,6 +21,6 @@ public class RecipeModel {
     }
 
     public String executeRecipeStart() {
-        return "Εκτέλεση: '" + name + "' για " + people + " " + (people == 1 ? "άτομο" : "άτομα");
+        return "Εκτέλεση Συνταγής: '" + name + "' για " + people + " " + (people == 1 ? "άτομο" : "άτομα");
     }
 }
