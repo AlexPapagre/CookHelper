@@ -7,7 +7,7 @@ public class MainMenuButtonPanel extends JPanel {
 
     public MainMenuButtonPanel(JFrame frame, DefaultListModel<String> listModel, JList<String> fileList) {
 
-        // Create main menu button panel buttons
+        // Add main menu button panel buttons
         DisplayRecipeButton displayRecipeButton = new DisplayRecipeButton(frame, fileList);
         ShoppingListButton shoppingListButton = new ShoppingListButton(frame, fileList);
         ExecuteRecipeButton executeRecipeButton = new ExecuteRecipeButton(frame, fileList);

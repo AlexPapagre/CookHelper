@@ -5,13 +5,13 @@ import java.awt.event.ActionEvent;
 import java.util.InputMismatchException;
 import java.util.List;
 
-public class ShoppingListOkButton extends OkButton {
+public class ShoppingListPeopleOkButton extends PeopleOkButton {
     private final JFrame frame;
     private final JDialog dialog;
     private final List<String> files;
     private final JTextField integerField;
 
-    public ShoppingListOkButton(JFrame frame, JDialog dialog, List<String> files, JTextField integerField) {
+    public ShoppingListPeopleOkButton(JFrame frame, JDialog dialog, List<String> files, JTextField integerField) {
         this.frame = frame;
         this.dialog = dialog;
         this.files = files;

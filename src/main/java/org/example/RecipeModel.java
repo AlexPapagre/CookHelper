@@ -19,4 +19,8 @@ public class RecipeModel {
     public String displayRecipe() {
         return "Συνταγή: '" + name + "' για " + people + " " + (people == 1 ? "άτομο" : "άτομα") + "\n\n" + recipe.getRecipe();
     }
+
+    public String executeRecipeStart() {
+        return "Εκτέλεση: '" + name + "' για " + people + " " + (people == 1 ? "άτομο" : "άτομα");
+    }
 }

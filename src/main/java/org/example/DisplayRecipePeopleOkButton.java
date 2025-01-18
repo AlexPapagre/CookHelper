@@ -4,13 +4,13 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.util.InputMismatchException;
 
-public class ExecuteRecipeOkButton extends OkButton {
+public class DisplayRecipePeopleOkButton extends PeopleOkButton {
     private final JFrame frame;
     private final JDialog dialog;
     private final String file;
     private final JTextField integerField;
 
-    public ExecuteRecipeOkButton(JFrame frame, JDialog dialog, String file, JTextField integerField) {
+    public DisplayRecipePeopleOkButton(JFrame frame, JDialog dialog, String file, JTextField integerField) {
         this.frame = frame;
         this.dialog = dialog;
         this.file = file;
@@ -32,8 +32,8 @@ public class ExecuteRecipeOkButton extends OkButton {
             // Close people dialog
             dialog.dispose();
 
-            // Execute Recipe
-//            ExecuteRecipeView
+            // Display Recipe
+            DisplayRecipeView displayRecipeView = new DisplayRecipeView(frame, new RecipeModel(file, people));
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(dialog, "Invalid input.\nPlease enter a valid amount of people!", "Error", JOptionPane.ERROR_MESSAGE);
         } catch (InputMismatchException ex) {
