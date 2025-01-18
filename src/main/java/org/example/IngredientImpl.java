@@ -1,7 +1,7 @@
 package org.example;
 
 public class IngredientImpl implements Ingredient {
-    private String name;
+    private final String name;
     private double amount;
     private String measure;
 

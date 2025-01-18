@@ -10,6 +10,6 @@ public interface Utensil {
      *
      * @return name the name utensil
      */
-    String getName();
+    String name();
 
 }

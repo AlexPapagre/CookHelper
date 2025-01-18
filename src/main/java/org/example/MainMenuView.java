@@ -5,7 +5,6 @@ import java.awt.*;
 import java.util.ListIterator;
 
 public class MainMenuView extends JFrame {
-    private MainMenuModel model;
 
     public MainMenuView(MainMenuModel model) {
 
@@ -15,7 +14,6 @@ public class MainMenuView extends JFrame {
         this.setSize(800, 600);
         this.setLocationRelativeTo(null);
         this.setLayout(new BorderLayout());
-        this.model = model;
 
         // Create JList and add files
         DefaultListModel<String> listModel = new DefaultListModel<>();
@@ -35,6 +33,9 @@ public class MainMenuView extends JFrame {
         // Add 'Buttons' panel
         MainMenuButtonPanel mainMenuButtonPanel = new MainMenuButtonPanel(this, fileList);
         this.add(mainMenuButtonPanel, BorderLayout.EAST);
+    }
+
+    public void display() {
 
         // Make main menu visible
         this.setVisible(true);

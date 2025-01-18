@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class RecipeListImpl implements RecipeList {
-    private List<Recipe> recipes;
+    private final List<Recipe> recipes;
     private Map<String, IngredientByMeasure> ingredients;
 
     public RecipeListImpl() {
@@ -40,7 +40,7 @@ public class RecipeListImpl implements RecipeList {
         Map<String, IngredientByMeasure> ingredients = new HashMap<>();
         for (Recipe recipe : recipes) {
             for (Step step : recipe.getSteps()) {
-                for (Ingredient ingredient : step.getIngredients()) {
+                for (Ingredient ingredient : step.ingredients()) {
                     if (ingredients.containsKey(ingredient.getName())) {
                         IngredientByMeasure ibm = ingredients.get(ingredient.getName());
                         if (ibm.containsKey(ingredient.getMeasure())) {

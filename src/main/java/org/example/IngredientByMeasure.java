@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class IngredientByMeasure {
-    private Map<String, Double> measures;
+    private final Map<String, Double> measures;
 
     public IngredientByMeasure(String key, Double value) {
         this.measures = new HashMap<>();

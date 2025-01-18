@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 public class RecipeImpl implements Recipe {
-    private List<Step> steps;
-    private Map<String, IngredientByMeasure> ingredients;
-    private Map<String, Integer> utensils;
-    private Time times;
+    private final List<Step> steps;
+    private final Map<String, IngredientByMeasure> ingredients;
+    private final Map<String, Integer> utensils;
+    private final Time times;
 
     public RecipeImpl(String fileName, int people) {
         StepReader in = new StepReaderImpl(people);
@@ -55,24 +55,24 @@ public class RecipeImpl implements Recipe {
         str.append("Βήματα:\n");
         int i = 1;
         for (Step step : steps) {
-            str.append("  ").append(i).append(". ").append(step.getDesc()).append("\n\n");
+            str.append("  ").append(i).append(". ").append(step.desc()).append("\n\n");
 
             // Step ingredients
             str.append("  " + "Υλικά βήματος ").append(i).append(": ");
-            if (step.getIngredients().isEmpty()) {
+            if (step.ingredients().isEmpty()) {
                 str.append(" Δεν υπάρχουν υλικά.");
             } else {
-                for (int j = 0; j < step.getIngredients().size(); j++) {
+                for (int j = 0; j < step.ingredients().size(); j++) {
                     if (j > 0) {
                         str.append(" και");
                     }
-                    str.append(" ").append(step.getIngredients().get(j).toString());
+                    str.append(" ").append(step.ingredients().get(j).toString());
                 }
             }
             str.append("\n");
 
             // Step time
-            str.append("  Χρόνος βήματος").append(i).append(": ").append(step.getTime().toString());
+            str.append("  Χρόνος βήματος").append(i).append(": ").append(step.time().toString());
 
             str.append("\n\n");
 
@@ -85,7 +85,7 @@ public class RecipeImpl implements Recipe {
     private Map<String, IngredientByMeasure> putIngredients() {
         Map<String, IngredientByMeasure> ingredients = new HashMap<>();
         for (Step step : steps) {
-            for (Ingredient ingredient : step.getIngredients()) {
+            for (Ingredient ingredient : step.ingredients()) {
                 if (ingredients.containsKey(ingredient.getName())) {
                     IngredientByMeasure ibm = ingredients.get(ingredient.getName());
                     if (ibm.containsKey(ingredient.getMeasure())) {
@@ -108,13 +108,13 @@ public class RecipeImpl implements Recipe {
     private Map<String, Integer> putUtensils() {
         Map<String, Integer> utensils = new HashMap<>();
         for (Step step : steps) {
-            for (Utensil utensil : step.getUtensils()) {
-                if (utensils.containsKey(utensil.getName())) {
-                    String key = utensil.getName();
+            for (Utensil utensil : step.utensils()) {
+                if (utensils.containsKey(utensil.name())) {
+                    String key = utensil.name();
                     Integer value = utensils.get(key) + 1;
                     utensils.put(key, value);
                 } else {
-                    utensils.put(utensil.getName(), 1);
+                    utensils.put(utensil.name(), 1);
                 }
             }
         }
@@ -124,7 +124,7 @@ public class RecipeImpl implements Recipe {
     private Time putTimes() {
         Time times = new TimeImpl();
         for (Step step : steps) {
-            times.addTimes(step.getTime());
+            times.addTimes(step.time());
         }
         return times;
     }

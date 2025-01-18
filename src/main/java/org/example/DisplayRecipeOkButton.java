@@ -6,10 +6,10 @@ import java.awt.event.ActionListener;
 import java.util.InputMismatchException;
 
 public class DisplayRecipeOkButton extends JButton implements ActionListener {
-    private JFrame frame;
-    private JDialog dialog;
-    private String file;
-    private JTextField integerField;
+    private final JFrame frame;
+    private final JDialog dialog;
+    private final String file;
+    private final JTextField integerField;
 
     public DisplayRecipeOkButton(JFrame frame, JDialog dialog, String file, JTextField integerField) {
 

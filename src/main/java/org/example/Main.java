@@ -1,7 +1,5 @@
 package org.example;
 
-import java.io.FileNotFoundException;
-
 public class Main {
 
     // Logger initialization
@@ -102,7 +100,7 @@ public class Main {
         }
 
         // GUI
-
-        MainMenuView view = new MainMenuView(new MainMenuModel(args));
+        MainMenuView mainMenuView = new MainMenuView(new MainMenuModel(args));
+        mainMenuView.display();
     }
 }

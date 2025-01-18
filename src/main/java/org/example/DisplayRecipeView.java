@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class DisplayRecipeView extends JDialog {
-    private JFrame frame;
-    private RecipeModel model;
 
     public DisplayRecipeView(JFrame frame, RecipeModel model) {
 

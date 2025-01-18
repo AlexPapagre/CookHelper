@@ -8,8 +8,8 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 public class StepReaderImpl implements StepReader {
     private static final Logger logErr = new ErrorLogger();
 
-    private List<Step> steps;
-    private int people;
+    private final List<Step> steps;
+    private final int people;
 
     public StepReaderImpl(int people) {
         this.steps = new ArrayList<>();
