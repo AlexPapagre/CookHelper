@@ -5,10 +5,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-public class MainMenuModel {
+public class MainMenuFiles {
     private final List<String> files = new LinkedList<>();
 
-    public MainMenuModel(String[] args) {
+    public MainMenuFiles(String[] args) {
         Logger logErr = new ErrorLogger();
 
         // Add valid files to menu

@@ -100,7 +100,7 @@ public class Main {
         }
 
         // GUI
-        MainMenuView mainMenuView = new MainMenuView(new MainMenuModel(args));
+        MainMenuView mainMenuView = new MainMenuView(new MainMenuFiles(args));
         mainMenuView.display();
     }
 }

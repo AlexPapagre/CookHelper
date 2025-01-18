@@ -6,7 +6,7 @@ import java.util.ListIterator;
 
 public class MainMenuView extends JFrame {
 
-    public MainMenuView(MainMenuModel model) {
+    public MainMenuView(MainMenuFiles files) {
 
         // Create main frame
         super("Cook Helper");
@@ -17,7 +17,7 @@ public class MainMenuView extends JFrame {
 
         // Create JList and add files
         DefaultListModel<String> listModel = new DefaultListModel<>();
-        ListIterator<String> fileIterator = model.filesIterator();
+        ListIterator<String> fileIterator = files.filesIterator();
         while (fileIterator.hasNext()) {
             listModel.addElement(fileIterator.next());
         }
