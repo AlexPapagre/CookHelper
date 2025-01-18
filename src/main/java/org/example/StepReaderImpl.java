@@ -17,7 +17,7 @@ public class StepReaderImpl implements StepReader {
     }
 
     @Override
-    public List<Step> parseSteps(String fileName) throws FileNotFoundException {
+    public List<Step> parseSteps(String fileName) {
         BufferedReader in = null;
         try {
             in = new BufferedReader(new FileReader(fileName, UTF_8));
@@ -53,7 +53,8 @@ public class StepReaderImpl implements StepReader {
                 steps.add(new Step(desc, ingredients, utensils, time));
             }
         } catch (FileNotFoundException e) {
-            throw new FileNotFoundException();
+            logErr.log("File \"" + fileName + "\" doesn't exist!");
+            System.exit(1);
         } catch (IOException e) {
             logErr.log("Error: " + e.getMessage());
             System.exit(1);

@@ -16,6 +16,6 @@ public interface StepReader {
      * @param fileName the name of the file
      * @return steps the list of steps
      */
-    List<Step> parseSteps(String fileName) throws FileNotFoundException;
+    List<Step> parseSteps(String fileName);
 
 }

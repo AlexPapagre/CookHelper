@@ -1,7 +1,5 @@
 package org.example;
 
-import javax.swing.*;
-import java.io.File;
 import java.io.FileNotFoundException;
 
 public class Main {
@@ -55,13 +53,7 @@ public class Main {
                     }
 
                     // Create recipe
-                    Recipe recipe = null;
-                    try {
-                        recipe = new RecipeImpl(fileName, people);
-                    } catch (FileNotFoundException e) {
-                        logErr.log("File \"" + fileName + "\" doesn't exist!");
-                        System.exit(1);
-                    }
+                    Recipe recipe = new RecipeImpl(fileName, people);
 
                     // Print recipe
                     logger.log(recipe.getRecipe());
@@ -93,12 +85,7 @@ public class Main {
                         }
 
                         // Create recipe
-                        try {
-                            recipes.add(new RecipeImpl(fileName, people));
-                        } catch (FileNotFoundException e) {
-                            logErr.log("File \"" + fileName + "\" doesn't exist!");
-                            System.exit(1);
-                        }
+                        recipes.add(new RecipeImpl(fileName, people));
                     }
 
                     // Make list
@@ -116,22 +103,6 @@ public class Main {
 
         // GUI
 
-        DefaultListModel<String> listModel = new DefaultListModel<>();
-        for (String arg : args) {
-
-            File file = new File(arg);
-            if (file.exists()) {
-                if (file.getName().endsWith(".cook")) {
-                    listModel.addElement(file.getName().replace(".cook", "") + " --> (" + file.getAbsolutePath() + ")");
-                } else {
-                    logErr.log("File \"" + file.getName() + "\" is not a \".cook\" file!");
-                }
-            } else {
-                logErr.log("File \"" + arg + "\" doesn't exist!");
-            }
-        }
-        JList<String> fileList = new JList<>(listModel);
-
-        logger.log("GUI");
+        MainMenuView view = new MainMenuView(new MainMenuModel(args));
     }
 }

@@ -1,6 +1,5 @@
 package org.example;
 
-import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +10,7 @@ public class RecipeImpl implements Recipe {
     private Map<String, Integer> utensils;
     private Time times;
 
-    public RecipeImpl(String fileName, int people) throws FileNotFoundException {
+    public RecipeImpl(String fileName, int people) {
         StepReader in = new StepReaderImpl(people);
         this.steps = in.parseSteps(fileName);
         this.ingredients = putIngredients();
@@ -59,7 +58,7 @@ public class RecipeImpl implements Recipe {
             str.append("  ").append(i).append(". ").append(step.getDesc()).append("\n\n");
 
             // Step ingredients
-            str.append("  " + "Υλικά βήματος:");
+            str.append("  " + "Υλικά βήματος ").append(i).append(": ");
             if (step.getIngredients().isEmpty()) {
                 str.append(" Δεν υπάρχουν υλικά.");
             } else {
@@ -73,9 +72,9 @@ public class RecipeImpl implements Recipe {
             str.append("\n");
 
             // Step time
-            str.append("  Χρόνος βήματος: ").append(step.getTime().toString());
+            str.append("  Χρόνος βήματος").append(i).append(": ").append(step.getTime().toString());
 
-            str.append("\n");
+            str.append("\n\n");
 
             i++;
         }
