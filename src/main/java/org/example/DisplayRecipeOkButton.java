@@ -43,7 +43,7 @@ public class DisplayRecipeOkButton extends JButton implements ActionListener {
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(dialog, "Invalid input.\nPlease enter a valid amount of people!", "Error", JOptionPane.ERROR_MESSAGE);
         } catch (InputMismatchException ex) {
-            JOptionPane.showMessageDialog(dialog, "Invalid input.\nPeople amount can't be negative or zero!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(dialog, "Invalid input.\nThe amount of people can't be negative or zero!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
