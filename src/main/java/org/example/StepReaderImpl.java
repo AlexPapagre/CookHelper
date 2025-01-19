@@ -104,7 +104,7 @@ public class StepReaderImpl implements StepReader {
                     ingredients.add(new IngredientImpl(name, people));
                 }
 
-            // Utensil
+                // Utensil
             } else if (step.charAt(i) == '#') {
 
                 // Utensil name
@@ -116,8 +116,8 @@ public class StepReaderImpl implements StepReader {
                 i = endOfName;
                 utensils.add(new UtensilImpl(name));
 
-            // Time
-            } else if(step.charAt(i) == '~') {
+                // Time
+            } else if (step.charAt(i) == '~') {
 
                 // Time amount
                 int startOfAmount = i + 2;
@@ -131,7 +131,7 @@ public class StepReaderImpl implements StepReader {
 
                     // Time creation
                     i = endOfMeasure;
-                   time = new TimeImpl(amount, measure);
+                    time = new TimeImpl(amount, measure);
                 } else {
                     logErr.log("File has no time measure!");
                     Exit.error();
@@ -148,7 +148,9 @@ public class StepReaderImpl implements StepReader {
 
             // Out of String
             boolean stop = false;
-            if (i >= step.length()) { break; }
+            if (i >= step.length()) {
+                break;
+            }
 
             switch (step.charAt(i)) {
                 case ' ', ',', '.', ';', '?', '!':
@@ -169,7 +171,9 @@ public class StepReaderImpl implements StepReader {
             }
 
             // Name found
-            if (stop) { break; }
+            if (stop) {
+                break;
+            }
 
             i++;
         }
@@ -210,5 +214,4 @@ public class StepReaderImpl implements StepReader {
             System.exit(1);
         }
     }
-
 }

@@ -6,5 +6,4 @@ public class ErrorLogger implements Logger {
     public void log(String message) {
         System.err.println(message);
     }
-
 }

@@ -99,8 +99,7 @@ public class Main {
             }
         }
 
-        // GUI
-        MainMenuView mainMenuView = new MainMenuView(new MainMenuFiles(args));
-        mainMenuView.display();
+        // Main Menu
+        new MainMenuView(new MainMenuFiles(args));
     }
 }

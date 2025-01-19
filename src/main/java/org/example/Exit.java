@@ -1,6 +1,7 @@
 package org.example;
 
 public class Exit {
+
     public static void error() {
         Logger logErr = new ErrorLogger();
 

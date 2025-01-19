@@ -33,7 +33,7 @@ public class DisplayRecipePeopleOkButton extends PeopleOkButton {
             dialog.dispose();
 
             // Display Recipe
-            DisplayRecipeView displayRecipeView = new DisplayRecipeView(frame, new RecipeModel(file, people));
+            new DisplayRecipeView(frame, new RecipeModel(file, people));
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(dialog, "Invalid input.\nPlease enter a valid amount of people!", "Error", JOptionPane.ERROR_MESSAGE);
         } catch (InputMismatchException ex) {

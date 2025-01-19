@@ -107,5 +107,4 @@ public class Convertor {
     public static String convertCountdownTime(long seconds) {
         return "Χρονόμετρο: " + (seconds == 0 ? " 0 δευτερόλεπτα" : convertTime(seconds));
     }
-
 }

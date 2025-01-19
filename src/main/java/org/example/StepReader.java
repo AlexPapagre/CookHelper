@@ -16,5 +16,4 @@ public interface StepReader {
      * @return steps the list of steps
      */
     List<Step> parseSteps(String fileName);
-
 }

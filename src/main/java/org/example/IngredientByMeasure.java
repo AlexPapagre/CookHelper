@@ -40,5 +40,4 @@ public class IngredientByMeasure {
         }
         return str.toString();
     }
-
 }

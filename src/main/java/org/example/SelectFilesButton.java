@@ -46,5 +46,4 @@ public class SelectFilesButton extends JButton implements ActionListener {
             }
         }
     }
-
 }

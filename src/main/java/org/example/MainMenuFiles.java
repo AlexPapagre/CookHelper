@@ -34,5 +34,4 @@ public class MainMenuFiles {
     public ListIterator<String> filesIterator() {
         return files.listIterator();
     }
-
 }

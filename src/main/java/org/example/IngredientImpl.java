@@ -56,5 +56,4 @@ public class IngredientImpl implements Ingredient {
             this.measure = measure;
         }
     }
-
 }

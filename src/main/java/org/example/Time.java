@@ -28,5 +28,4 @@ public interface Time {
      */
     @Override
     String toString();
-
 }

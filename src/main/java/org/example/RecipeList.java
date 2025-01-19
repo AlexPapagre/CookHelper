@@ -23,5 +23,4 @@ public interface RecipeList {
      * @return str the created list
      */
     String getList();
-
 }

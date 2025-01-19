@@ -59,5 +59,4 @@ public class RecipeListImpl implements RecipeList {
         }
         return ingredients;
     }
-
 }

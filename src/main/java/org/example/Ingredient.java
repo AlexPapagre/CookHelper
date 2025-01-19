@@ -33,5 +33,4 @@ public interface Ingredient {
      */
     @Override
     String toString();
-
 }

@@ -45,5 +45,4 @@ public class TimeImpl implements Time {
             Exit.error();
         }
     }
-
 }
