@@ -8,9 +8,10 @@ import java.awt.event.ActionListener;
 public class ExecuteRecipeStepButtonPanelCountdownButton extends JButton implements ActionListener {
     private final JFrame frame;
     private final RecipeModel model;
+    private final ExecuteRecipeStepButtonPanel stepIndex;
     private ExecuteRecipeStepButtonPanelNextButton nextButton;
 
-    public ExecuteRecipeStepButtonPanelCountdownButton(JFrame frame, RecipeModel model) {
+    public ExecuteRecipeStepButtonPanelCountdownButton(JFrame frame, RecipeModel model, ExecuteRecipeStepButtonPanel stepIndex) {
 
         // Create 'Start Countdown' button
         super("Start Countdown");
@@ -18,6 +19,7 @@ public class ExecuteRecipeStepButtonPanelCountdownButton extends JButton impleme
 
         this.frame = frame;
         this.model = model;
+        this.stepIndex = stepIndex;
 
         // Enable or disable countdown button based on if the step has countdown or not
         this.setEnabled(model.stepHasTime(0));
@@ -32,13 +34,8 @@ public class ExecuteRecipeStepButtonPanelCountdownButton extends JButton impleme
         // Disable countdown button
         this.setEnabled(false);
 
-        // Add countdown label
-        JLabel countdownLabel = new JLabel(model.stepTimeLeft(0, 0));
-        countdownLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        countdownLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
         // Countdown
-        new CountdownView(frame, model, countdownLabel);
+        new CountdownView(frame, model, stepIndex);
     }
 
     public void setNextButton(ExecuteRecipeStepButtonPanelNextButton nextButton) {

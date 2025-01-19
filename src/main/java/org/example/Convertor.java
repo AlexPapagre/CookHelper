@@ -64,13 +64,13 @@ public class Convertor {
         return str.toString();
     }
 
-    public static String convertTime(long time) {
+    public static String convertTime(long seconds) {
 
-        if (time <= 0) {
+        if (seconds <= 0) {
             return "Δεν υπάρχει χρόνος αναμονής.";
         }
 
-        long h = time / 60 / 60, m = (time / 60) % 60, s = time % 60;
+        long h = seconds / 60 / 60, m = (seconds / 60) % 60, s = seconds % 60;
         StringBuilder str = new StringBuilder();
 
         // Hours
@@ -102,6 +102,10 @@ public class Convertor {
         }
 
         return str.toString();
+    }
+
+    public static String convertCountdownTime(long seconds) {
+        return "Χρονόμετρο: " + (seconds == 0 ? " 0 δευτερόλεπτα" : convertTime(seconds));
     }
 
 }

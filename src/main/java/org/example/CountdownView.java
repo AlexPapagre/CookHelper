@@ -1,21 +1,34 @@
 package org.example;
 
+import gr.hua.dit.oop2.countdown.Countdown;
+import gr.hua.dit.oop2.countdown.CountdownFactory;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class CountdownView extends JDialog {
 
-    public CountdownView(JFrame frame, RecipeModel model, JLabel countdownLabel) {
+    public CountdownView(JFrame frame, RecipeModel model, ExecuteRecipeStepButtonPanel stepIndex) {
 
         // Create countdown dialog
         super(frame, "Countdown Timer", true);
-        this.setSize(300, 200);
+        this.setSize(600, 200);
         this.setLayout(new BorderLayout());
+
+        // Get step index
+        int i = stepIndex.getI();
 
         // Add countdown panel
         JPanel countdownPanel = new JPanel();
         countdownPanel.setLayout(new BoxLayout(countdownPanel, BoxLayout.Y_AXIS));
-        countdownPanel.add(countdownLabel);
+
+        // Add countdown panel label
+        JLabel countdownPanelLabel = new JLabel(Convertor.convertCountdownTime(model.stepSeconds(i)));
+        countdownPanelLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        countdownPanelLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        countdownPanel.add(countdownPanelLabel);
         this.add(countdownPanel, BorderLayout.CENTER);
 
         // Add close button panel
@@ -23,14 +36,19 @@ public class CountdownView extends JDialog {
         closeButtonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         CloseButton closeButton = new CloseButton(this);
         closeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        closeButton.add(closeButton);
+        closeButtonPanel.add(closeButton);
         this.add(closeButtonPanel, BorderLayout.SOUTH);
 
-        // TODO build countdown form countdown factory
-        // TODO add a timer that notifies every 1 second and refreshes label with Countdown's time left
-        // TODO make a notifier for finishing the recipe and when the notifier action performed update label to "Time's up!"
-        // TODO a new class with ActionListener every one second to print time left
-        // TODO idea: anonimous class from cardlayout line 373 and instead of countdown[0] to have time left
+        Timer timer = new Timer();
+        Countdown countdown = CountdownFactory.countdown(model.stepSeconds(i));
+        countdown.addNotifier(new NotifierImpl(timer, countdownPanelLabel));
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                countdownPanelLabel.setText(Convertor.convertCountdownTime(countdown.secondsRemaining() + 1));
+            }
+        }, 1000, 500);
+        countdown.start();
 
         // Make countdown view visible
         this.setLocationRelativeTo(frame);

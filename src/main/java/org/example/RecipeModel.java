@@ -36,12 +36,8 @@ public class RecipeModel {
         return recipe.getStep(i).time().getSeconds() > 0;
     }
 
-    public boolean stepHasTimeLeft(int i, long secondsPassed) {
-        return recipe.getStep(i).time().getSeconds() - secondsPassed > 0;
-    }
-
-    public String stepTimeLeft(int i, long secondsPassed) {
-        return "Countdown: " + Convertor.convertTime(recipe.getStep(i).time().getSeconds() - secondsPassed);
+    public long stepSeconds(int i) {
+        return recipe.getStep(i).time().getSeconds();
     }
 
     public String executeRecipeStep(int i) {
@@ -61,7 +57,7 @@ public class RecipeModel {
                 str.append(" ").append(step.ingredients().get(j).toString());
             }
         }
-        str.append("\n  Χρόνος βήματος").append(i + 1).append(": ").append(step.time().toString());
+        str.append("\n  Χρόνος βήματος ").append(i + 1).append(": ").append(step.time().toString());
 
         return str.toString();
     }

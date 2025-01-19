@@ -5,13 +5,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ExecuteRecipeStepButtonPanelNextButton extends JButton implements ActionListener {
-    private int i = 0;
     private final RecipeModel model;
     private final JProgressBar progressBar;
     private final JTextArea textArea;
+    private final ExecuteRecipeStepButtonPanel stepIndex;
     private ExecuteRecipeStepButtonPanelCountdownButton countdownButton;
 
-    public ExecuteRecipeStepButtonPanelNextButton(RecipeModel model, JProgressBar progressBar, JTextArea textArea) {
+    public ExecuteRecipeStepButtonPanelNextButton(RecipeModel model, JProgressBar progressBar, JTextArea textArea, ExecuteRecipeStepButtonPanel stepIndex) {
 
         // Create 'Next' button
         super("Next");
@@ -20,7 +20,7 @@ public class ExecuteRecipeStepButtonPanelNextButton extends JButton implements A
         this.model = model;
         this.progressBar = progressBar;
         this.textArea = textArea;
-        this.countdownButton = countdownButton;
+        this.stepIndex = stepIndex;
 
         // Enable or disable next button based on if the step has countdown or not
         this.setEnabled(!model.stepHasTime(0));
@@ -28,7 +28,9 @@ public class ExecuteRecipeStepButtonPanelNextButton extends JButton implements A
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (model.stepExists(++i)) {
+        stepIndex.increaseI();
+        int i = stepIndex.getI();
+        if (model.stepExists(i)) {
 
             // Update progress bar and text area
             progressBar.setValue(i);
