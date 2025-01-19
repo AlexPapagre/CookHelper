@@ -82,6 +82,11 @@ public class RecipeImpl implements Recipe {
         return str.toString();
     }
 
+    @Override
+    public Step getStep(int i) {
+        return steps.get(i);
+    }
+
     private Map<String, IngredientByMeasure> putIngredients() {
         Map<String, IngredientByMeasure> ingredients = new HashMap<>();
         for (Step step : steps) {

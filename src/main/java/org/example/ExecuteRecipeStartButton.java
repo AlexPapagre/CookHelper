@@ -5,15 +5,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ExecuteRecipeStartButton extends JButton implements ActionListener {
+    private final JFrame frame;
     private final JDialog dialog;
+    private final RecipeModel model;
 
-    public ExecuteRecipeStartButton(JDialog dialog) {
+    public ExecuteRecipeStartButton(JFrame frame, JDialog dialog, RecipeModel model) {
 
         // Create 'Start' button
         super("Start");
         this.addActionListener(this);
 
+        this.frame = frame;
         this.dialog = dialog;
+        this.model = model;
     }
 
     @Override
@@ -22,6 +26,7 @@ public class ExecuteRecipeStartButton extends JButton implements ActionListener 
         // Close execute recipe view
         dialog.dispose();
 
-        // TODO CardLayout row 280
+        // Execute Recipe Steps
+        new ExecuteRecipeStepView(frame, model);
     }
 }

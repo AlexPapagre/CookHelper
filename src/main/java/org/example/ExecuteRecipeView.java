@@ -17,7 +17,7 @@ public class ExecuteRecipeView extends JDialog {
         this.add(executeRecipeStartPanel, BorderLayout.CENTER);
 
         // Add execute recipe button panel
-        ExecuteRecipeButtonPanel executeRecipeButtonPanel = new ExecuteRecipeButtonPanel(this);
+        ExecuteRecipeButtonPanel executeRecipeButtonPanel = new ExecuteRecipeButtonPanel(frame, this, model);
         this.add(executeRecipeButtonPanel, BorderLayout.SOUTH);
 
         // Make execute recipe view visible

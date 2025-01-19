@@ -21,4 +21,12 @@ public interface Recipe {
      */
     String getRecipe();
 
+    /**
+     * Gets an index i and returns the step in this index.
+     *
+     * @param i the index
+     * @return step the step
+     */
+    Step getStep(int i);
+
 }

@@ -12,7 +12,6 @@ public class MainMenuView extends JFrame {
         super("Cook Helper");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800, 600);
-        this.setLocationRelativeTo(null);
         this.setLayout(new BorderLayout());
 
         // Create JList and add files
@@ -38,6 +37,7 @@ public class MainMenuView extends JFrame {
     public void display() {
 
         // Make main menu visible
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
 }

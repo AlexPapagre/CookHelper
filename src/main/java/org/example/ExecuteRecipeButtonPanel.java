@@ -5,17 +5,15 @@ import java.awt.*;
 
 public class ExecuteRecipeButtonPanel extends JPanel {
 
-    public ExecuteRecipeButtonPanel(JDialog dialog) {
+    public ExecuteRecipeButtonPanel(JFrame frame, JDialog dialog, RecipeModel model) {
 
         // Create execute recipe button panel
         super(new FlowLayout(FlowLayout.CENTER));
 
-        // Add 'Start' button
-        ExecuteRecipeStartButton executeRecipeStartButton = new ExecuteRecipeStartButton(dialog);
-        this.add(executeRecipeStartButton);
-
-        // Add 'Close' button
+        // Add execute recipe button panel buttons
+        ExecuteRecipeStartButton executeRecipeStartButton = new ExecuteRecipeStartButton(frame, dialog, model);
         CloseButton closeButton = new CloseButton(dialog);
+        this.add(executeRecipeStartButton);
         this.add(closeButton);
     }
 }

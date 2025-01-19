@@ -1,0 +1,35 @@
+package org.example;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class CountdownView extends JDialog {
+
+    public CountdownView(JFrame frame, JDialog dialog, RecipeModel model, JLabel countdownLabel) {
+
+        // Create countdown dialog
+        super(frame, "Countdown Timer", true);
+        this.setSize(300, 200);
+        this.setLayout(new BorderLayout());
+
+        // Add countdown panel
+        CountdownPanel countdownPanel = new CountdownPanel(countdownLabel);
+        this.add(countdownPanel, BorderLayout.CENTER);
+
+        // Add close button panel
+        JPanel closeButtonPanel = new JPanel();
+        closeButtonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        CloseButton closeButton = new CloseButton(dialog);
+        closeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        closeButton.add(closeButton);
+        this.add(closeButtonPanel, BorderLayout.SOUTH);
+
+        // TODO build countdown form countdown factory
+        // TODO add a timer that notifies every 1 second and refreshes label with Countdown's time left
+        // TODO make a notifier for finishing the recipe and when the notifier action performed update label to "Time's up!"
+
+        // Make countdown view visible
+        this.setLocationRelativeTo(frame);
+        this.setVisible(true);
+    }
+}
