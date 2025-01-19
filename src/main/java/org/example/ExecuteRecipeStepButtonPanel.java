@@ -12,7 +12,7 @@ public class ExecuteRecipeStepButtonPanel extends JPanel {
 
         // Create execute recipe step button panel buttons
         ExecuteRecipeStepButtonPanelNextButton executeRecipeStepButtonPanelNextButton = new ExecuteRecipeStepButtonPanelNextButton(model, progressBar, textArea);
-        ExecuteRecipeStepButtonPanelCountdownButton executeRecipeStepButtonPanelCountdownButton = new ExecuteRecipeStepButtonPanelCountdownButton(frame, dialog, model);
+        ExecuteRecipeStepButtonPanelCountdownButton executeRecipeStepButtonPanelCountdownButton = new ExecuteRecipeStepButtonPanelCountdownButton(frame, model);
         executeRecipeStepButtonPanelNextButton.setCountdownButton(executeRecipeStepButtonPanelCountdownButton);
         executeRecipeStepButtonPanelCountdownButton.setNextButton(executeRecipeStepButtonPanelNextButton);
         CloseButton closeButton = new CloseButton(dialog);

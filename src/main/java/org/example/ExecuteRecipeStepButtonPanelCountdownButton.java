@@ -7,18 +7,16 @@ import java.awt.event.ActionListener;
 
 public class ExecuteRecipeStepButtonPanelCountdownButton extends JButton implements ActionListener {
     private final JFrame frame;
-    private final JDialog dialog;
     private final RecipeModel model;
     private ExecuteRecipeStepButtonPanelNextButton nextButton;
 
-    public ExecuteRecipeStepButtonPanelCountdownButton(JFrame frame, JDialog dialog, RecipeModel model) {
+    public ExecuteRecipeStepButtonPanelCountdownButton(JFrame frame, RecipeModel model) {
 
         // Create 'Start Countdown' button
         super("Start Countdown");
         this.addActionListener(this);
 
         this.frame = frame;
-        this.dialog = dialog;
         this.model = model;
 
         // Enable or disable countdown button based on if the step has countdown or not
@@ -40,7 +38,7 @@ public class ExecuteRecipeStepButtonPanelCountdownButton extends JButton impleme
         countdownLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // Countdown
-        new CountdownView(frame, dialog, model, countdownLabel);
+        new CountdownView(frame, model, countdownLabel);
     }
 
     public void setNextButton(ExecuteRecipeStepButtonPanelNextButton nextButton) {
