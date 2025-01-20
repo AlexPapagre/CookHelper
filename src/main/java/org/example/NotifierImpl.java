@@ -4,13 +4,12 @@ import gr.hua.dit.oop2.countdown.Countdown;
 import gr.hua.dit.oop2.countdown.Notifier;
 
 import javax.swing.*;
-import java.util.Timer;
 
 public class NotifierImpl implements Notifier {
-    private final Timer timer;
+    private final java.util.Timer timer;
     private final JLabel label;
 
-    public NotifierImpl(Timer timer, JLabel label) {
+    public NotifierImpl(java.util.Timer timer, JLabel label) {
         this.timer = timer;
         this.label = label;
     }

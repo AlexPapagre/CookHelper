@@ -4,10 +4,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import static java.nio.charset.StandardCharsets.UTF_8;
+import static org.example.Main.logErr;
 
 public class StepReaderImpl implements StepReader {
-    private static final Logger logErr = new ErrorLogger();
-
     private final List<Step> steps;
     private final int people;
 

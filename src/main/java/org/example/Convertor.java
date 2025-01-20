@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Iterator;
+
 public class Convertor {
 
     public static String convertIngredient(double amount, String measure) {
@@ -105,6 +107,43 @@ public class Convertor {
     }
 
     public static String convertCountdownTime(long seconds) {
-        return "Χρονόμετρο: " + (seconds == 0 ? " 0 δευτερόλεπτα" : convertTime(seconds));
+        return "Χρονόμετρο: " + convertTime(seconds);
+    }
+
+    public static String convertNames(Iterator<String> namesIterator) {
+        StringBuilder str = new StringBuilder();
+
+        str.append("'").append(namesIterator.next()).append("'");
+        while (namesIterator.hasNext()) {
+            str.append(", '").append(namesIterator.next()).append("'");
+        }
+
+        return str.toString();
+    }
+
+    public static String convertFileName(String file) {
+        return splitFileNameAndFilePath(file, 0);
+    }
+
+    public static String convertFileNames(Iterator<String> namesIterator) {
+        StringBuilder str = new StringBuilder();
+
+        str.append("'").append(convertFileName(namesIterator.next())).append("'");
+        while (namesIterator.hasNext()) {
+            str.append(", '").append(convertFileName(namesIterator.next())).append("'");
+        }
+
+        return str.toString();
+    }
+
+    public static String convertFilePath(String file) {
+        return splitFileNameAndFilePath(file, 1);
+    }
+
+    private static String splitFileNameAndFilePath(String file, int i) {
+        String[] parts = file.split(" --> \\(");
+        parts[1] = parts[1].replace(")", "");
+
+        return parts[i];
     }
 }

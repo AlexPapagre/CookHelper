@@ -5,12 +5,10 @@ import gr.hua.dit.oop2.countdown.CountdownFactory;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class CountdownView extends JDialog {
 
-    public CountdownView(JFrame frame, RecipeModel model, ExecuteRecipeStepButtonPanel stepIndex) {
+    public CountdownView(JFrame frame, ExecuteRecipeModel model) {
 
         // Create countdown dialog
         super(frame, "Countdown Timer", true);
@@ -18,7 +16,7 @@ public class CountdownView extends JDialog {
         this.setLayout(new BorderLayout());
 
         // Get step index
-        int i = stepIndex.getI();
+        int i = model.getIndex();
 
         // Add countdown panel
         JPanel countdownPanel = new JPanel();
@@ -39,10 +37,11 @@ public class CountdownView extends JDialog {
         closeButtonPanel.add(closeButton);
         this.add(closeButtonPanel, BorderLayout.SOUTH);
 
-        Timer timer = new Timer();
+        // Create and start countdown
+        java.util.Timer timer = new java.util.Timer();
         Countdown countdown = CountdownFactory.countdown(model.stepSeconds(i));
         countdown.addNotifier(new NotifierImpl(timer, countdownPanelLabel));
-        timer.schedule(new TimerTask() {
+        timer.schedule(new java.util.TimerTask() {
             @Override
             public void run() {
                 countdownPanelLabel.setText(Convertor.convertCountdownTime(countdown.secondsRemaining() + 1));

@@ -11,7 +11,7 @@ public class MainMenuButtonPanel extends JPanel {
         DisplayRecipeButton displayRecipeButton = new DisplayRecipeButton(frame, fileList);
         ShoppingListButton shoppingListButton = new ShoppingListButton(frame, fileList);
         ExecuteRecipeButton executeRecipeButton = new ExecuteRecipeButton(frame, fileList);
-        RemoveRecipeButton removeRecipeButton = new RemoveRecipeButton(frame, listModel, fileList);
+        RemoveRecipesButton removeRecipesButton = new RemoveRecipesButton(frame, listModel, fileList);
         ExitButton exitButton = new ExitButton(frame);
 
         // Create main menu button panel
@@ -23,7 +23,7 @@ public class MainMenuButtonPanel extends JPanel {
         this.add(Box.createRigidArea(new Dimension(0, 10)));
         this.add(executeRecipeButton);
         this.add(Box.createRigidArea(new Dimension(0, 10)));
-        this.add(removeRecipeButton);
+        this.add(removeRecipesButton);
         this.add(Box.createRigidArea(new Dimension(0, 10)));
         this.add(exitButton);
         this.add(Box.createVerticalGlue());

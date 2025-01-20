@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class ExecuteRecipeStepView extends JDialog {
 
-    public ExecuteRecipeStepView(JFrame frame, RecipeModel model) {
+    public ExecuteRecipeStepView(JFrame frame, ExecuteRecipeModel model) {
 
         // Create execute recipe step dialog
         super(frame, "Recipe Steps", true);

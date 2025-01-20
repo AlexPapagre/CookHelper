@@ -3,8 +3,8 @@ package org.example;
 public class Main {
 
     // Logger initialization
-    private static final Logger logger = new ConsoleLogger();
-    private static final Logger logErr = new ErrorLogger();
+    public static final Logger logger = LoggerFactory.getInstance().getLogger("console");
+    public static final Logger logErr = LoggerFactory.getInstance().getLogger("error");
 
     public static void main(String[] args) {
 
@@ -29,8 +29,7 @@ public class Main {
 
                 // Check for files
                 if (files.length < 1) {
-                    logErr.log("No files provided!");
-                    Exit.error();
+                    Exit.error("No files provided!");
                 }
 
                 if (files.length == 1) { // One file
@@ -40,14 +39,12 @@ public class Main {
 
                     // Check if argument is "-list"
                     if (fileName.equals("-list")) {
-                        logErr.log("For lists you can type \"-list\" followed by one or more files to display a list!");
-                        Exit.error();
+                        Exit.error("For lists you can use the '-term -list' modifiers followed by one or more files to display a list!");
                     }
 
                     // Check if file is ".cook"
                     if (!fileName.endsWith(".cook")) {
-                        logErr.log("File \"" + fileName + "\" is not a \".cook\" file!");
-                        Exit.error();
+                        Exit.error("File '" + fileName + "' is not a '.cook' file!");
                     }
 
                     // Create recipe
@@ -63,8 +60,11 @@ public class Main {
 
                     // Check if first argument isn't "-list"
                     if (!files[0].equals("-list")) {
-                        logErr.log("For multiple arguments you can type \"-list\" followed by one or more files to display a list!");
-                        Exit.error();
+                        if (files[0].startsWith("-")) {
+                            Exit.error("'" + files[0] + "' is not a modifier!");
+                        } else {
+                            Exit.error("For multiple arguments you can use the '-term -list' modifiers followed by one or more files to display a list!");
+                        }
                     }
 
                     // Create recipe list
@@ -78,8 +78,7 @@ public class Main {
 
                         // Check if file is ".cook"
                         if (!fileName.endsWith(".cook")) {
-                            logErr.log("File \"" + fileName + "\" is not a \".cook\" file!");
-                            Exit.error();
+                            Exit.error("File '" + fileName + "' is not a '.cook' file!");
                         }
 
                         // Create recipe
@@ -96,10 +95,13 @@ public class Main {
                     System.exit(0);
 
                 }
+            } else if (args[0].startsWith("-")) {
+                Exit.error("'" + args[0] + "' is not a modifier!");
             }
         }
 
         // Main Menu
+        logger.log("Opening GUI");
         new MainMenuView(new MainMenuFiles(args));
     }
 }

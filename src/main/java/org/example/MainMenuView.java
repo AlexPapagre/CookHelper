@@ -2,7 +2,9 @@ package org.example;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ListIterator;
+import java.util.Iterator;
+
+import static org.example.Main.logger;
 
 public class MainMenuView extends JFrame {
 
@@ -15,8 +17,11 @@ public class MainMenuView extends JFrame {
         this.setLayout(new BorderLayout());
 
         // Create JList and add files
+        if (files.filesIterator().hasNext()) {
+            logger.log("Selected Files: " + Convertor.convertFileNames(files.filesIterator()));
+        }
         DefaultListModel<String> listModel = new DefaultListModel<>();
-        ListIterator<String> fileIterator = files.filesIterator();
+        Iterator<String> fileIterator = files.filesIterator();
         while (fileIterator.hasNext()) {
             listModel.addElement(fileIterator.next());
         }

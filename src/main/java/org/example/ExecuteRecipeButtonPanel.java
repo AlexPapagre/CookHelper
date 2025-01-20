@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class ExecuteRecipeButtonPanel extends JPanel {
 
-    public ExecuteRecipeButtonPanel(JFrame frame, JDialog dialog, RecipeModel model) {
+    public ExecuteRecipeButtonPanel(JFrame frame, JDialog dialog, ExecuteRecipeModel model) {
 
         // Create execute recipe button panel
         super(new FlowLayout(FlowLayout.CENTER));

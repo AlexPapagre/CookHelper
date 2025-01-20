@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class DisplayRecipeView extends JDialog {
 
-    public DisplayRecipeView(JFrame frame, RecipeModel model) {
+    public DisplayRecipeView(JFrame frame, DisplayRecipeModel model) {
 
         // Create display recipe dialog
         super(frame, "Display Recipe", true);

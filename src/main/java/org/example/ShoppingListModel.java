@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,14 +23,18 @@ public class ShoppingListModel {
         }
     }
 
+    public int getPeople() {
+        return people;
+    }
+
+    public String getNames() {
+        return Convertor.convertNames(names.listIterator());
+    }
+
     public String shoppingList() {
         StringBuilder str = new StringBuilder();
 
-        str.append("Λίστα σούπερ μάρκετ: '").append(names.getFirst()).append("'");
-        names.removeFirst();
-        for (String name : names) {
-            str.append(", '").append(name).append("'");
-        }
+        str.append("Λίστα σούπερ μάρκετ: ").append(getNames());
         str.append(" για ").append(people).append(" ").append(people == 1 ? "άτομο" : "άτομα").append("\n\n");
 
         RecipeList recipeList = new RecipeListImpl();

@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static org.example.Main.logger;
+
 public class ExitButton extends JButton implements ActionListener {
     private final JFrame frame;
 
@@ -27,6 +29,7 @@ public class ExitButton extends JButton implements ActionListener {
         if (confirmExit == JOptionPane.YES_OPTION) {
 
             // Exit program
+            logger.log("Exit: Exiting program");
             System.exit(0);
         }
     }

@@ -1,9 +1,9 @@
 package org.example;
 
 import java.io.File;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ListIterator;
 
 public class MainMenuFiles {
     private final List<String> files = new LinkedList<>();
@@ -19,10 +19,10 @@ public class MainMenuFiles {
                 if (file.getName().endsWith(".cook")) {
                     addFile(file);
                 } else {
-                    logErr.log("File \"" + file.getName() + "\" is not a \".cook\" file!");
+                    logErr.log("File '" + file.getName() + "' is not a '.cook' file!");
                 }
             } else {
-                logErr.log("File \"" + arg + "\" doesn't exist!");
+                logErr.log("File '" + arg + "' doesn't exist!");
             }
         }
     }
@@ -31,7 +31,7 @@ public class MainMenuFiles {
         files.add(file.getName().replace(".cook", "") + " --> (" + file.getAbsolutePath() + ")");
     }
 
-    public ListIterator<String> filesIterator() {
+    public Iterator<String> filesIterator() {
         return files.listIterator();
     }
 }

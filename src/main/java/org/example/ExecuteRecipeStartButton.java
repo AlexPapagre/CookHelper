@@ -7,9 +7,9 @@ import java.awt.event.ActionListener;
 public class ExecuteRecipeStartButton extends JButton implements ActionListener {
     private final JFrame frame;
     private final JDialog dialog;
-    private final RecipeModel model;
+    private final ExecuteRecipeModel model;
 
-    public ExecuteRecipeStartButton(JFrame frame, JDialog dialog, RecipeModel model) {
+    public ExecuteRecipeStartButton(JFrame frame, JDialog dialog, ExecuteRecipeModel model) {
 
         // Create 'Start' button
         super("Start");

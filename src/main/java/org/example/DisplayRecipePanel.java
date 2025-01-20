@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class DisplayRecipePanel extends JPanel {
 
-    public DisplayRecipePanel(RecipeModel model) {
+    public DisplayRecipePanel(DisplayRecipeModel model) {
 
         // Create display recipe text area
         JTextArea displayRecipeTextArea = new JTextArea(model.displayRecipe());

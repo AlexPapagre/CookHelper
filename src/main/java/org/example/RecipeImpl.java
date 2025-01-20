@@ -72,7 +72,7 @@ public class RecipeImpl implements Recipe {
             str.append("\n");
 
             // Step time
-            str.append("  Χρόνος βήματος").append(i).append(": ").append(step.time().toString());
+            str.append("  Χρόνος βήματος ").append(i).append(": ").append(step.time().toString());
 
             str.append("\n\n");
 
