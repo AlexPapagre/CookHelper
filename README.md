@@ -16,7 +16,7 @@ Create a jar using
 mvn package
 ```
 
-For everything you need to know about how to run main
+Run for everything you need to know about how to run main
 
 ```bash
 java -jar target/recipes.jar -help
