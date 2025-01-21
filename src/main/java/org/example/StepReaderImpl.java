@@ -46,8 +46,7 @@ public class StepReaderImpl implements StepReader {
             if (!desc.isEmpty()) {
                 List<Ingredient> ingredients = new ArrayList<>();
                 List<Utensil> utensils = new ArrayList<>();
-                Time time = new TimeImpl();
-                findIngredientsUtensilsTimes(ingredients, utensils, desc);
+                Time time = findIngredientsUtensilsTimes(ingredients, utensils, desc);
                 steps.add(new Step(desc, ingredients, utensils, time));
             }
         } catch (FileNotFoundException e) {
