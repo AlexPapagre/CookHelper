@@ -15,9 +15,19 @@ public class MainMenuFiles {
         for (String arg : args) {
 
             File file = new File(arg);
+
+            // Check if file exists
             if (file.exists()) {
+
+                // Check if file is .cook file
                 if (file.getName().endsWith(".cook")) {
-                    addFile(file);
+
+                    // Check if file is already in the list
+                    if (!filesContains(file)) {
+                        addFile(file);
+                    } else {
+                        logErr.log("File '" + file.getName() + "' is already in the list.");
+                    }
                 } else {
                     logErr.log("File '" + file.getName() + "' is not a '.cook' file!");
                 }
@@ -27,11 +37,24 @@ public class MainMenuFiles {
         }
     }
 
-    private void addFile(File file) {
-        files.add(file.getName().replace(".cook", "") + " --> (" + file.getAbsolutePath() + ")");
-    }
-
     public Iterator<String> filesIterator() {
         return files.listIterator();
+    }
+
+    private boolean filesContains(File file) {
+        for (String listFile : files) {
+            if (convertFile(file).equals(listFile)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void addFile(File file) {
+        files.add(convertFile(file));
+    }
+
+    private String convertFile(File file) {
+        return file.getName().replace(".cook", "") + " --> (" + file.getAbsolutePath() + ")";
     }
 }

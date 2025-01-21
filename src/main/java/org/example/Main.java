@@ -29,7 +29,7 @@ public class Main {
 
                 // Check for files
                 if (files.length < 1) {
-                    Exit.error("No files provided!");
+                    Exit.errorGuide("No files provided!");
                 }
 
                 if (files.length == 1) { // One file
@@ -37,14 +37,14 @@ public class Main {
                     // Get fileName
                     String fileName = files[0];
 
-                    // Check if argument is "-list"
+                    // Check if argument is '-list'
                     if (fileName.equals("-list")) {
-                        Exit.error("For lists you can use the '-term -list' modifiers followed by one or more files to display a list!");
+                        Exit.errorGuide("For lists you can use the '-term -list' modifiers followed by one or more files to display a list!");
                     }
 
-                    // Check if file is ".cook"
+                    // Check if file is .cook file
                     if (!fileName.endsWith(".cook")) {
-                        Exit.error("File '" + fileName + "' is not a '.cook' file!");
+                        Exit.errorGuide("File '" + fileName + "' is not a '.cook' file!");
                     }
 
                     // Create recipe
@@ -58,12 +58,12 @@ public class Main {
 
                 } else { // List of files
 
-                    // Check if first argument isn't "-list"
+                    // Check if first argument isn't '-list'
                     if (!files[0].equals("-list")) {
                         if (files[0].startsWith("-")) {
-                            Exit.error("'" + files[0] + "' is not a modifier!");
+                            Exit.errorGuide("'" + files[0] + "' is not a modifier!");
                         } else {
-                            Exit.error("For multiple arguments you can use the '-term -list' modifiers followed by one or more files to display a list!");
+                            Exit.errorGuide("For multiple arguments you can use the '-term -list' modifiers followed by one or more files to display a list!");
                         }
                     }
 
@@ -76,9 +76,9 @@ public class Main {
                         // Get fileName
                         String fileName = files[i];
 
-                        // Check if file is ".cook"
+                        // Check if file is .cook file
                         if (!fileName.endsWith(".cook")) {
-                            Exit.error("File '" + fileName + "' is not a '.cook' file!");
+                            Exit.errorGuide("File '" + fileName + "' is not a '.cook' file!");
                         }
 
                         // Create recipe
@@ -96,7 +96,7 @@ public class Main {
 
                 }
             } else if (args[0].startsWith("-")) {
-                Exit.error("'" + args[0] + "' is not a modifier!");
+                Exit.errorGuide("'" + args[0] + "' is not a modifier!");
             }
         }
 

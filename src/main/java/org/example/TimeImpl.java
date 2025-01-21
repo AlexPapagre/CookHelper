@@ -38,11 +38,7 @@ public class TimeImpl implements Time {
         } else if (measure.equalsIgnoreCase("hours") || measure.equalsIgnoreCase("hour") || measure.equalsIgnoreCase("ώρες") || measure.equalsIgnoreCase("ώρα")) {
             this.seconds = (long) (time * 60 * 60);
         } else {
-            Logger logErr = new ErrorLogger();
-            logErr.log("File has an unrecognizable time measure!");
-            logErr.log("\"" + measure + "\" is not a supported time measure.");
-            logErr.log("Supported time measures: seconds, second, δευτερόλεπτα, δευτερόλεπτo, minutes, minute, λεπτά, λεπτό, hours, hour, ώρες, ώρα.");
-            Exit.error();
+            Exit.errorGuide("File has an unrecognizable time measure!\n'" + measure + "' is not a supported time measure.\nSupported time measures: seconds, second, δευτερόλεπτα, δευτερόλεπτo, minutes, minute, λεπτά, λεπτό, hours, hour, ώρες, ώρα.");
         }
     }
 }

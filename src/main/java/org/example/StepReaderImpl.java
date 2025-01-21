@@ -4,7 +4,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static org.example.Main.logErr;
 
 public class StepReaderImpl implements StepReader {
     private final List<Step> steps;
@@ -52,11 +51,9 @@ public class StepReaderImpl implements StepReader {
                 steps.add(new Step(desc, ingredients, utensils, time));
             }
         } catch (FileNotFoundException e) {
-            logErr.log("File \"" + fileName + "\" doesn't exist!");
-            System.exit(1);
+            Exit.error("File '" + fileName + "' doesn't exist!");
         } catch (IOException e) {
-            logErr.log("Error: " + e.getMessage());
-            System.exit(1);
+            Exit.error("Error: " + e.getMessage());
         } finally {
             closeQuietly(in);
         }
@@ -132,8 +129,7 @@ public class StepReaderImpl implements StepReader {
                     i = endOfMeasure;
                     time = new TimeImpl(amount, measure);
                 } else {
-                    logErr.log("File has no time measure!");
-                    Exit.error();
+                    Exit.errorGuide("File has no time measure!");
                 }
             }
         }
@@ -209,8 +205,7 @@ public class StepReaderImpl implements StepReader {
                 in.close();
             }
         } catch (IOException e) {
-            logErr.log("Error closing file!");
-            System.exit(1);
+            Exit.error("Error closing file!");
         }
     }
 }
