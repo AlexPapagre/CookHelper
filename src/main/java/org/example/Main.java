@@ -103,6 +103,8 @@ public class Main {
                 }
             } else if (args[0].startsWith("-")) { // Wrong modifier
                 Error.exit("'" + args[0] + "' is not a modifier!");
+            } else {
+                Error.exit("To add arguments you have to use modifiers!");
             }
         }
 
