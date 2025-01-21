@@ -10,13 +10,13 @@ Compile using
 mvn compile
 ```
 
-Create a jar using JAVA_HOME="/usr/lib/jvm/java-1.21.0-openjdk-amd64"
+Create a jar using
 
 ```bash
 mvn package
 ```
 
-Run for everything you need to know about how to run main
+See the user manual
 
 ```bash
 java -jar target/recipes.jar -help

@@ -9,7 +9,7 @@ public class ExecuteRecipeView extends JDialog {
 
         // Create execute recipe dialog
         super(frame, "Execute Recipe", true);
-        this.setSize(400, 300);
+        this.setSize(600, 200);
         this.setLayout(new BorderLayout());
 
         // Add execute recipe start panel
