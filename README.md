@@ -10,7 +10,7 @@ Compile using
 mvn compile
 ```
 
-Create a jar using
+Create a jar using JAVA_HOME="/usr/lib/jvm/java-1.21.0-openjdk-amd64"
 
 ```bash
 mvn package
