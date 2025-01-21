@@ -8,15 +8,21 @@ public class Main {
 
     public static void main(String[] args) {
 
+        // Store non modifier arguments
+        String[] files = new String[0];
+
         // Check if user provided arguments
         if (args.length > 0) {
-
-            // Terminal
-            if (args[0].equalsIgnoreCase("-term")) {
+            if (args[0].equalsIgnoreCase("-help")) { // User manual
+                logger.log(UserManual.manual());
+                System.exit(0);
+            } else if (args[0].equalsIgnoreCase("-gui")) {
+                files = new String[args.length - 1];
+                System.arraycopy(args, 1, files, 0, args.length - 1);
+            } else if (args[0].equalsIgnoreCase("-term")) { // Terminal
 
                 // Searching for people
                 int people;
-                String[] files;
                 try {
                     people = Integer.parseInt(args[args.length - 1]);
                     files = new String[args.length - 2];
@@ -29,7 +35,7 @@ public class Main {
 
                 // Check for files
                 if (files.length < 1) {
-                    Exit.errorGuide("No files provided!");
+                    Error.exit("No files provided!");
                 }
 
                 if (files.length == 1) { // One file
@@ -39,12 +45,12 @@ public class Main {
 
                     // Check if argument is '-list'
                     if (fileName.equals("-list")) {
-                        Exit.errorGuide("For lists you can use the '-term -list' modifiers followed by one or more files to display a list!");
+                        Error.exit("No files provided!");
                     }
 
                     // Check if file is .cook file
                     if (!fileName.endsWith(".cook")) {
-                        Exit.errorGuide("File '" + fileName + "' is not a '.cook' file!");
+                        Error.exit("File '" + fileName + "' is not a '.cook' file!");
                     }
 
                     // Create recipe
@@ -61,9 +67,9 @@ public class Main {
                     // Check if first argument isn't '-list'
                     if (!files[0].equals("-list")) {
                         if (files[0].startsWith("-")) {
-                            Exit.errorGuide("'" + files[0] + "' is not a modifier!");
+                            Error.exit("'" + files[0] + "' is not a modifier!");
                         } else {
-                            Exit.errorGuide("For multiple arguments you can use the '-term -list' modifiers followed by one or more files to display a list!");
+                            Error.exit("Too many files!");
                         }
                     }
 
@@ -78,7 +84,7 @@ public class Main {
 
                         // Check if file is .cook file
                         if (!fileName.endsWith(".cook")) {
-                            Exit.errorGuide("File '" + fileName + "' is not a '.cook' file!");
+                            Error.exit("File '" + fileName + "' is not a '.cook' file!");
                         }
 
                         // Create recipe
@@ -95,13 +101,12 @@ public class Main {
                     System.exit(0);
 
                 }
-            } else if (args[0].startsWith("-")) {
-                Exit.errorGuide("'" + args[0] + "' is not a modifier!");
+            } else if (args[0].startsWith("-")) { // Wrong modifier
+                Error.exit("'" + args[0] + "' is not a modifier!");
             }
         }
 
-        // Main Menu
-        logger.log("Opening GUI");
-        new MainMenuView(new MainMenuFiles(args));
+        // Main menu
+        new MainMenuView(new MainMenuFiles(files));
     }
 }

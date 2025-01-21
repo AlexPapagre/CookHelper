@@ -17,9 +17,6 @@ public class MainMenuView extends JFrame {
         this.setLayout(new BorderLayout());
 
         // Create JList and add files
-        if (files.filesIterator().hasNext()) {
-            logger.log("Selected Files: " + Convertor.convertFileNames(files.filesIterator()));
-        }
         DefaultListModel<String> listModel = new DefaultListModel<>();
         Iterator<String> fileIterator = files.filesIterator();
         while (fileIterator.hasNext()) {
@@ -37,6 +34,11 @@ public class MainMenuView extends JFrame {
         // Add main menu button panel
         MainMenuButtonPanel mainMenuButtonPanel = new MainMenuButtonPanel(this, listModel, fileList);
         this.add(mainMenuButtonPanel, BorderLayout.EAST);
+
+        logger.log("Opening GUI");
+        if (files.filesIterator().hasNext()) {
+            logger.log("Selected Files: " + Convertor.convertFileNames(files.filesIterator()));
+        }
 
         // Make main menu visible
         this.setLocationRelativeTo(null);

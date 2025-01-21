@@ -51,9 +51,9 @@ public class StepReaderImpl implements StepReader {
                 steps.add(new Step(desc, ingredients, utensils, time));
             }
         } catch (FileNotFoundException e) {
-            Exit.error("File '" + fileName + "' doesn't exist!");
+            Error.exit("File '" + fileName + "' doesn't exist!");
         } catch (IOException e) {
-            Exit.error("Error: " + e.getMessage());
+            Error.exit("IO error!");
         } finally {
             closeQuietly(in);
         }
@@ -129,7 +129,7 @@ public class StepReaderImpl implements StepReader {
                     i = endOfMeasure;
                     time = new TimeImpl(amount, measure);
                 } else {
-                    Exit.errorGuide("File has no time measure!");
+                    Error.exit("Time measure missing!");
                 }
             }
         }
@@ -205,7 +205,7 @@ public class StepReaderImpl implements StepReader {
                 in.close();
             }
         } catch (IOException e) {
-            Exit.error("Error closing file!");
+            Error.exit("Error while closing file!");
         }
     }
 }
